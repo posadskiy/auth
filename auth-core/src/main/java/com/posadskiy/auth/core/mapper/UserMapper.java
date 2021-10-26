@@ -4,10 +4,8 @@ import com.posadskiy.auth.core.db.model.DbUser;
 import com.posadskiy.auth.api.dto.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.springframework.stereotype.Component;
 
 @Mapper
-@Component
 public interface UserMapper {
 	
 	@Mapping(target = "roles", ignore = true)

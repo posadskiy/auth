@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 @RequestMapping("login")
 public class LoginEndpoint {
-	
+
 	private final LoginController loginController;
 
 	@Autowired

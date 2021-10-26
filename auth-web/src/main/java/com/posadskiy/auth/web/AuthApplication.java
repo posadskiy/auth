@@ -1,4 +1,4 @@
-package com.posadskiy.auth;
+package com.posadskiy.auth.web;
 
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.springframework.boot.SpringApplication;
