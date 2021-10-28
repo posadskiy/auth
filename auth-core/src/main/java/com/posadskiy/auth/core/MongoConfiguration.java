@@ -5,13 +5,13 @@ import com.mongodb.MongoClientURI;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Slf4j
 @Configuration
-@EnableMongoRepositories
+@ComponentScan
 public class MongoConfiguration {
 	private final static String DB_NAME = "cost_accounting";
 
