@@ -5,9 +5,8 @@ import com.posadskiy.auth.core.db.UserRepository;
 import com.posadskiy.auth.core.db.model.DbUser;
 import com.posadskiy.auth.api.dto.User;
 import com.posadskiy.auth.core.exception.UserDoesNotExistException;
-import com.posadskiy.auth.core.exception.UserIsIncorrectException;
 import com.posadskiy.auth.core.mapper.UserMapper;
-import com.posadskiy.auth.core.validation.UserValidation;
+import com.posadskiy.auth.core.validation.Validation;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,10 +21,10 @@ public class UserControllerImpl implements UserController {
 
 	private final UserRepository userRepository;
 	private final UserMapper userMapper;
-	private final UserValidation userValidation;
+	private final Validation userValidation;
 
 	@Autowired
-	public UserControllerImpl(UserRepository userRepository, UserMapper userMapper, UserValidation userValidation) {
+	public UserControllerImpl(UserRepository userRepository, UserMapper userMapper, Validation userValidation) {
 		this.userRepository = userRepository;
 		this.userMapper = userMapper;
 		this.userValidation = userValidation;
@@ -80,7 +79,7 @@ public class UserControllerImpl implements UserController {
 	public User updateUser(User user) {
 		final DbUser foundUser = getById(user.getId());
 		
-		if (!userValidation.userValidate(user)) throw new UserIsIncorrectException();
+		userValidation.userValidate(user);
 		
 		foundUser.setName(user.getName());
 		foundUser.setDefaultCurrency(user.getDefaultCurrency());
