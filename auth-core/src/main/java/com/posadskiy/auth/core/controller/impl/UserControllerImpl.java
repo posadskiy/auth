@@ -9,6 +9,7 @@ import com.posadskiy.auth.core.mapper.UserMapper;
 import com.posadskiy.auth.core.validation.Validation;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,13 +19,12 @@ import java.util.stream.Collectors;
 @Component
 public class UserControllerImpl implements UserController {
 
-
 	private final UserRepository userRepository;
 	private final UserMapper userMapper;
-	private final Validation userValidation;
+	private final Validation<User> userValidation;
 
 	@Autowired
-	public UserControllerImpl(UserRepository userRepository, UserMapper userMapper, Validation userValidation) {
+	public UserControllerImpl(UserRepository userRepository, UserMapper userMapper, @Qualifier("updateValidation") Validation<User> userValidation) {
 		this.userRepository = userRepository;
 		this.userMapper = userMapper;
 		this.userValidation = userValidation;
@@ -79,7 +79,7 @@ public class UserControllerImpl implements UserController {
 	public User updateUser(User user) {
 		final DbUser foundUser = getById(user.getId());
 		
-		userValidation.userValidate(user);
+		userValidation.validate(user);
 		
 		foundUser.setName(user.getName());
 		foundUser.setDefaultCurrency(user.getDefaultCurrency());

@@ -3,8 +3,11 @@ package com.posadskiy.auth.core.controller.impl;
 import com.posadskiy.auth.core.controller.SessionController;
 import com.posadskiy.auth.core.db.SessionRepository;
 import com.posadskiy.auth.core.db.model.DbSession;
+import com.posadskiy.auth.core.exception.SessionDoesNotExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 public class SessionControllerImpl implements SessionController {
@@ -19,7 +22,28 @@ public class SessionControllerImpl implements SessionController {
 		this.repository = repository;
 	}
 
+	@Override
 	public DbSession create(String sessionId, String userId) {
 		return repository.save(new DbSession(sessionId, userId, System.currentTimeMillis() + SESSION_LIFE_TIME_MS));
+	}
+	
+	@Override
+	public boolean isActive(String sessionId) {
+		DbSession foundSession;
+
+		try {
+			foundSession = getById(sessionId);
+		} catch (Exception e) {
+			return false;
+		}
+		
+		return foundSession.getTime() > System.currentTimeMillis();
+	}
+
+	public DbSession getById(String sessionId) {
+		Optional<DbSession> foundSession = repository.findById(sessionId);
+		if (!foundSession.isPresent()) throw new SessionDoesNotExistException();
+
+		return foundSession.get();
 	}
 }
