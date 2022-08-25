@@ -2,28 +2,23 @@ package com.posadskiy.auth.web.endpoint;
 
 import com.posadskiy.auth.api.dto.User;
 import com.posadskiy.auth.core.controller.UserController;
-import com.posadskiy.auth.web.queue.LoginQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("user")
 public class UserEndpoint {
 	
 	private final UserController userController;
-	private final LoginQueue loginQueue;
 
 	@Autowired
-	public UserEndpoint(UserController userController, LoginQueue loginQueue) {
+	public UserEndpoint(UserController userController) {
 		this.userController = userController;
-		this.loginQueue = loginQueue;
 	}
 	
 	@GetMapping("v1/{id}")
 	public User getUserById(@PathVariable final String id) {
-		loginQueue.toQueue(userController.getMappedById(id));
 		return userController.getMappedById(id);
 	}
 	
