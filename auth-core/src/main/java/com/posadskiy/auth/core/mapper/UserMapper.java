@@ -7,10 +7,7 @@ import org.mapstruct.Mapping;
 
 @Mapper
 public interface UserMapper {
-	
-	@Mapping(target = "roles", ignore = true)
-	@Mapping(target = "projectId", ignore = true)
-	@Mapping(target = "chatId", ignore = true)
+
 	@Mapping(source = "id", target = "id")
 	@Mapping(source = "name", target = "name")
 	@Mapping(source = "email", target = "email")

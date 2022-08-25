@@ -12,38 +12,38 @@ import java.util.Optional;
 @Component
 public class SessionControllerImpl implements SessionController {
 
-	public static final long SESSION_LIFE_TIME_MS = 2592000000L;
-	public static final int SESSION_LIFE_TIME_S = 2592000;
+    public static final long SESSION_LIFE_TIME_MS = 2592000000L;
+    public static final int SESSION_LIFE_TIME_S = 2592000;
 
-	private final SessionRepository repository;
+    private final SessionRepository repository;
 
-	@Autowired
-	public SessionControllerImpl(SessionRepository repository) {
-		this.repository = repository;
-	}
+    @Autowired
+    public SessionControllerImpl(SessionRepository repository) {
+        this.repository = repository;
+    }
 
-	@Override
-	public DbSession create(String sessionId, String userId) {
-		return repository.save(new DbSession(sessionId, userId, System.currentTimeMillis() + SESSION_LIFE_TIME_MS));
-	}
-	
-	@Override
-	public boolean isActive(String sessionId) {
-		DbSession foundSession;
+    @Override
+    public DbSession create(String sessionId, String userId) {
+        return repository.save(new DbSession(sessionId, userId, System.currentTimeMillis() + SESSION_LIFE_TIME_MS));
+    }
 
-		try {
-			foundSession = getById(sessionId);
-		} catch (Exception e) {
-			return false;
-		}
-		
-		return foundSession.getTime() > System.currentTimeMillis();
-	}
+    @Override
+    public boolean isActive(String sessionId) {
+        DbSession foundSession;
 
-	public DbSession getById(String sessionId) {
-		Optional<DbSession> foundSession = repository.findById(sessionId);
-		if (!foundSession.isPresent()) throw new SessionDoesNotExistException();
+        try {
+            foundSession = getById(sessionId);
+        } catch (Exception e) {
+            return false;
+        }
 
-		return foundSession.get();
-	}
+        return foundSession.getTime() > System.currentTimeMillis();
+    }
+
+    public DbSession getById(String sessionId) {
+        Optional<DbSession> foundSession = repository.findById(sessionId);
+        if (!foundSession.isPresent()) throw new SessionDoesNotExistException();
+
+        return foundSession.get();
+    }
 }

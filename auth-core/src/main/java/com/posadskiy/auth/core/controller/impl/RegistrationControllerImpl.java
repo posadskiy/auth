@@ -18,34 +18,34 @@ import javax.servlet.http.HttpServletResponse;
 
 @Component
 public class RegistrationControllerImpl implements RegistrationController {
-	final Validation<User> validation;
-	final UserMapper userMapper;
-	final CookieManager cookieManager;
-	final UserRepository userRepository;
-	final SessionController sessionController;
+    final Validation<User> validation;
+    final UserMapper userMapper;
+    final CookieManager cookieManager;
+    final UserRepository userRepository;
+    final SessionController sessionController;
 
-	@Autowired
-	public RegistrationControllerImpl(@Qualifier("registrationValidation") Validation<User> validation, UserMapper userMapper, CookieManager cookieManager, UserRepository userRepository, SessionController sessionController) {
-		this.validation = validation;
-		this.userMapper = userMapper;
-		this.cookieManager = cookieManager;
-		this.userRepository = userRepository;
-		this.sessionController = sessionController;
-	}
+    @Autowired
+    public RegistrationControllerImpl(@Qualifier("registrationValidation") Validation<User> validation, UserMapper userMapper, CookieManager cookieManager, UserRepository userRepository, SessionController sessionController) {
+        this.validation = validation;
+        this.userMapper = userMapper;
+        this.cookieManager = cookieManager;
+        this.userRepository = userRepository;
+        this.sessionController = sessionController;
+    }
 
-	@Override
-	public User registration(@NotNull User user, @NotNull final String sessionId, @NotNull final HttpServletResponse response) {
-		validation.validate(user);
-		
-		DbUser savedUser = userRepository.save(
-			userMapper.mapFromDto(user)
-		);
-		
-		DbSession dbSession = sessionController.create(sessionId, savedUser.getId());
-		response.addCookie(cookieManager.createCookie(dbSession.getId()));
-		
-		return userMapper.mapToDto(
-			savedUser
-		);
-	}
+    @Override
+    public User registration(@NotNull User user, @NotNull final String sessionId, @NotNull final HttpServletResponse response) {
+        validation.validate(user);
+
+        DbUser savedUser = userRepository.save(
+            userMapper.mapFromDto(user)
+        );
+
+        DbSession dbSession = sessionController.create(sessionId, savedUser.getId());
+        response.addCookie(cookieManager.createCookie(dbSession.getId()));
+
+        return userMapper.mapToDto(
+            savedUser
+        );
+    }
 }

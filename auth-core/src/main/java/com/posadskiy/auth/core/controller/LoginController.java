@@ -5,5 +5,5 @@ import com.posadskiy.auth.api.dto.User;
 import javax.servlet.http.HttpServletResponse;
 
 public interface LoginController {
-	User auth(final User user, final String sessionId, final HttpServletResponse response);
+    User auth(final User user, final String sessionId, final HttpServletResponse response);
 }

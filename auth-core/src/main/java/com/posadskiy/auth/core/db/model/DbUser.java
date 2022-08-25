@@ -16,8 +16,5 @@ public class DbUser implements Serializable {
 	private String name;
 	private String email;
 	private String password;
-	private Long chatId;
-	private String projectId;
-	private List<String> roles;
 	private String defaultCurrency;
 }

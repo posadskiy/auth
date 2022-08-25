@@ -20,12 +20,6 @@ public class UserEndpoint {
 		this.userController = userController;
 		this.loginQueue = loginQueue;
 	}
-
-
-	@PostMapping("v1/allInProject")
-	public List<User> getAllByProjectId(@RequestBody final User user) {
-		return userController.getAllUsersByUserId(user.getId());
-	}
 	
 	@GetMapping("v1/{id}")
 	public User getUserById(@PathVariable final String id) {
