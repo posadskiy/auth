@@ -50,21 +50,4 @@ public class UserControllerImpl implements UserController {
         return foundUser;
     }
 
-    @Override
-    public DbUser save(@NotNull DbUser dbUser) {
-        return userRepository.save(dbUser);
-    }
-
-    @Override
-    public User updateUser(User user) {
-        final DbUser foundUser = getById(user.getId());
-
-        userValidation.validate(user);
-
-        foundUser.setName(user.getName());
-        foundUser.setDefaultCurrency(user.getDefaultCurrency());
-        return userMapper.mapToDto(
-            this.save(foundUser)
-        );
-    }
 }

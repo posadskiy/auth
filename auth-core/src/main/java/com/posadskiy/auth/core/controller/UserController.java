@@ -10,8 +10,4 @@ public interface UserController {
     User getMappedById(String userId);
 
     DbUser getByEmail(String email);
-
-    DbUser save(@NotNull DbUser dbUser);
-
-    User updateUser(User user);
 }

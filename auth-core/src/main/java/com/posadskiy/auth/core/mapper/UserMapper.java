@@ -15,8 +15,8 @@ public interface UserMapper {
 	DbUser mapFromDto(User user);
 
 	@Mapping(source = "id", target = "id")
-	@Mapping(source = "name", target = "name")
-	@Mapping(source = "email", target = "email")
+	@Mapping(source = "name", target = "name", ignore = true)
+	@Mapping(source = "email", target = "email", ignore = true)
 	@Mapping(source = "password", target = "password", ignore = true)
 	User mapToDto(DbUser user);
 }
