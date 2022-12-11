@@ -7,7 +7,5 @@ import org.jetbrains.annotations.NotNull;
 public interface UserController {
     DbUser getById(String userId);
 
-    User getMappedById(String userId);
-
     DbUser getByEmail(String email);
 }

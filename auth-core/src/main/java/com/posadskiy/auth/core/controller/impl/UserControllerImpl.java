@@ -18,14 +18,10 @@ import java.util.Optional;
 public class UserControllerImpl implements UserController {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper;
-    private final Validation<User> userValidation;
 
     @Autowired
-    public UserControllerImpl(UserRepository userRepository, UserMapper userMapper, @Qualifier("updateValidation") Validation<User> userValidation) {
+    public UserControllerImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.userMapper = userMapper;
-        this.userValidation = userValidation;
     }
 
     public DbUser getById(String userId) {
@@ -33,13 +29,6 @@ public class UserControllerImpl implements UserController {
         if (!foundUser.isPresent()) throw new UserDoesNotExistException();
 
         return foundUser.get();
-    }
-
-    @Override
-    public User getMappedById(String userId) {
-        return userMapper.mapToDto(
-            getById(userId)
-        );
     }
 
     @Override
