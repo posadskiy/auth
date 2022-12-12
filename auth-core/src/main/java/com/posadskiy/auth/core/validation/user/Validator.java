@@ -2,12 +2,10 @@ package com.posadskiy.auth.core.validation.user;
 
 import com.posadskiy.auth.core.exception.UserValidationException;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
 public class Validator {
 	private static final int PASSWORD_MIN_LENGTH = 8;
 

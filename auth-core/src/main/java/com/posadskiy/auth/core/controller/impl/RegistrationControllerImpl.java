@@ -6,6 +6,7 @@ import com.posadskiy.auth.core.controller.SessionController;
 import com.posadskiy.auth.core.db.UserRepository;
 import com.posadskiy.auth.core.db.model.DbSession;
 import com.posadskiy.auth.core.db.model.DbUser;
+import com.posadskiy.auth.core.exception.UserWithProvidedEmailAlreadyExistException;
 import com.posadskiy.auth.core.manager.CookieManager;
 import com.posadskiy.auth.core.mapper.UserMapper;
 import com.posadskiy.auth.core.validation.Validation;
@@ -36,6 +37,9 @@ public class RegistrationControllerImpl implements RegistrationController {
     @Override
     public User registration(@NotNull User user, @NotNull final String sessionId, @NotNull final HttpServletResponse response) {
         validation.validate(user);
+
+        final DbUser byEmail = userRepository.findByEmail(user.getEmail());
+        if (byEmail != null) throw new UserWithProvidedEmailAlreadyExistException();
 
         DbUser savedUser = userRepository.save(
             userMapper.mapFromDto(user)
