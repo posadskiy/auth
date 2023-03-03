@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("login")
+@RequestMapping("v0/login")
 public class LoginEndpoint {
 
 	private final LoginController loginController;
@@ -22,7 +22,7 @@ public class LoginEndpoint {
 		this.loginController = loginController;
 	}
 
-	@PostMapping("v1/auth")
+	@PostMapping("auth")
 	public User auth(@RequestBody final User user,
 					 final HttpServletRequest request,
 					 final HttpServletResponse response) {

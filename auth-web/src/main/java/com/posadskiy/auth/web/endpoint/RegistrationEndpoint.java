@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("reg")
+@RequestMapping("v0/registration")
 public class RegistrationEndpoint {
 	final RegistrationController registrationController;
 
@@ -21,7 +21,7 @@ public class RegistrationEndpoint {
 		this.registrationController = registrationController;
 	}
 
-	@PostMapping("v1/registration")
+	@PostMapping("signup")
 	public User registration(@RequestBody final User user,
 					 final HttpServletRequest request,
 					 final HttpServletResponse response) {

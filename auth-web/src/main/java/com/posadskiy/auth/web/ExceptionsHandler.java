@@ -23,7 +23,7 @@ public class ExceptionsHandler {
 	@ExceptionHandler(UserWithProvidedEmailAlreadyExistException.class)
 	public ResponseEntity<?> userWithProvidedEmailAlreadyExistException(UserWithProvidedEmailAlreadyExistException exception) {
 		log.debug("UserWithProvidedEmailAlreadyExistException", exception);
-		RestException restException = new RestException("User with provided e-mail already exists", 1, "Please, use other e-mail address");
+		RestException restException = new RestException("User with provided e-mail already exists", 1, "Log in into account or use different e-mail address");
 		return new ResponseEntity<>(restException, HttpStatus.BAD_REQUEST);
 	}
 
