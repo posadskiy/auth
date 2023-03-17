@@ -1,11 +1,9 @@
 package com.posadskiy.auth.core.controller;
 
-import com.posadskiy.auth.api.dto.User;
-import com.posadskiy.auth.core.db.model.DbUser;
-import org.jetbrains.annotations.NotNull;
+import com.posadskiy.auth.core.model.User;
 
 public interface UserController {
-    DbUser getById(String userId);
+    User getById(String userId);
 
-    DbUser getByEmail(String email);
+    User getByEmail(String email);
 }

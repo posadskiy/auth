@@ -1,51 +1,29 @@
 package com.posadskiy.auth.core.controller.impl;
 
-import com.posadskiy.auth.api.dto.User;
+import com.posadskiy.auth.api.dto.UserDto;
 import com.posadskiy.auth.core.controller.LoginController;
-import com.posadskiy.auth.core.controller.SessionController;
 import com.posadskiy.auth.core.controller.UserController;
-import com.posadskiy.auth.core.db.model.DbSession;
-import com.posadskiy.auth.core.db.model.DbUser;
 import com.posadskiy.auth.core.exception.UserPasswordDoesNotMatchException;
-import com.posadskiy.auth.core.manager.CookieManager;
-import com.posadskiy.auth.core.mapper.UserMapper;
+import com.posadskiy.auth.core.model.User;
+import com.posadskiy.auth.core.service.Password;
+import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletResponse;
-
 @Component
+@RequiredArgsConstructor
 public class LoginControllerImpl implements LoginController {
 
     private final UserController userController;
-    private final UserMapper userMapper;
-    private final SessionController sessionController;
-    private final CookieManager cookieManager;
-
-    @Autowired
-    public LoginControllerImpl(UserController userController, UserMapper userMapper, SessionController sessionController, CookieManager cookieManager) {
-        this.userController = userController;
-        this.userMapper = userMapper;
-        this.sessionController = sessionController;
-        this.cookieManager = cookieManager;
-    }
-
-    private @NotNull DbUser getUserByEmail(@NotNull final String email) {
-        return userController.getByEmail(email);
-    }
 
     @Override
-    public @NotNull User auth(@NotNull final User user, @NotNull final String sessionId, @NotNull final HttpServletResponse response) {
-        DbUser foundUser = this.getUserByEmail(user.getEmail().toLowerCase());
+    public User auth(@NotNull final UserDto userDto) {
+        User foundUser = userController.getByEmail(userDto.getEmail().toLowerCase());
 
-        if (!foundUser.getPassword().equals(user.getPassword())) {
+        if (!Password.match(userDto.getPassword(), foundUser.getPassword())) {
             throw new UserPasswordDoesNotMatchException();
         }
 
-        DbSession dbSession = sessionController.create(sessionId, foundUser.getId());
-        response.addCookie(cookieManager.createCookie(dbSession.getId()));
-
-        return userMapper.mapToDto(foundUser);
+        return foundUser;
     }
 }

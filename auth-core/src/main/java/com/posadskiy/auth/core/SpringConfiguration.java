@@ -1,22 +1,31 @@
 package com.posadskiy.auth.core;
 
-import com.posadskiy.auth.core.mapper.UserMapper;
-import com.posadskiy.auth.core.mapper.UserMapperImpl;
+import com.posadskiy.auth.core.mapper.dto.UserDtoMapper;
+import com.posadskiy.auth.core.mapper.dto.UserDtoMapperImpl;
+import com.posadskiy.auth.core.mapper.entity.UserEntityMapper;
+import com.posadskiy.auth.core.mapper.entity.UserEntityMapperImpl;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableAutoConfiguration
-@EnableMongoRepositories
+@EnableJpaRepositories
+@EnableTransactionManagement
 @ComponentScan
 public class SpringConfiguration {
 
-	@Bean
-	public UserMapper userMapper() {
-		return new UserMapperImpl();
-	}
+    @Bean
+    public UserDtoMapper userDtoMapper() {
+        return new UserDtoMapperImpl();
+    }
+
+    @Bean
+    public UserEntityMapper userEntityMapper() {
+        return new UserEntityMapperImpl();
+    }
 
 }
