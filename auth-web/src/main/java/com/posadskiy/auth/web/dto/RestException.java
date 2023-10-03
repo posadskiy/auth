@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class RestException {
-	private String title;
-	private int code;
-	private String message;
+    private String title;
+    private int code;
+    private String message;
 }

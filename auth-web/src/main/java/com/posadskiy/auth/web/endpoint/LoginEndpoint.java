@@ -1,8 +1,8 @@
 package com.posadskiy.auth.web.endpoint;
 
 import com.posadskiy.auth.api.dto.UserDto;
-import com.posadskiy.auth.core.controller.LoginController;
 import com.posadskiy.auth.core.mapper.dto.UserDtoMapper;
+import com.posadskiy.auth.core.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class LoginEndpoint {
 
-    private final LoginController loginController;
+    private final LoginService loginController;
     private final UserDtoMapper userDtoMapper;
 
     @PostMapping("auth")

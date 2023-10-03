@@ -1,8 +1,8 @@
 package com.posadskiy.auth.web.endpoint;
 
 import com.posadskiy.auth.api.dto.UserDto;
-import com.posadskiy.auth.core.controller.UserController;
 import com.posadskiy.auth.core.mapper.dto.UserDtoMapper;
+import com.posadskiy.auth.core.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserEndpoint {
 
-    private final UserController userController;
+    private final UserService userController;
     private final UserDtoMapper userDtoMapper;
 
     @GetMapping("get/{id}")
