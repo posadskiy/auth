@@ -1,8 +1,8 @@
-package com.posadskiy.auth.core.controller;
+package com.posadskiy.auth.core.service;
 
 import com.posadskiy.auth.core.model.User;
 
-public interface UserController {
+public interface UserService {
     User getById(String userId);
 
     User getByEmail(String email);

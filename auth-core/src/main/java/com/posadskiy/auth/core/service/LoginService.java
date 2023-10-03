@@ -1,8 +1,8 @@
-package com.posadskiy.auth.core.controller;
+package com.posadskiy.auth.core.service;
 
 import com.posadskiy.auth.api.dto.UserDto;
 import com.posadskiy.auth.core.model.User;
 
-public interface LoginController {
+public interface LoginService {
     User auth(final UserDto userDto);
 }

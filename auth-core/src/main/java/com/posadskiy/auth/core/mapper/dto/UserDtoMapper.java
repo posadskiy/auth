@@ -2,7 +2,7 @@ package com.posadskiy.auth.core.mapper.dto;
 
 import com.posadskiy.auth.api.dto.UserDto;
 import com.posadskiy.auth.core.model.User;
-import com.posadskiy.auth.core.service.Password;
+import com.posadskiy.auth.core.utils.PasswordMatcher;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -26,7 +26,7 @@ public interface UserDtoMapper {
     @AfterMapping
     default void setPassword(@MappingTarget User user, UserDto userDto) {
         user.setPassword(
-            Password.encode(
+            PasswordMatcher.encode(
                 userDto.getPassword()
             )
         );

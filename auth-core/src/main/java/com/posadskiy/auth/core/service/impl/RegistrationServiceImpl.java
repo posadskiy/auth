@@ -1,8 +1,8 @@
-package com.posadskiy.auth.core.controller.impl;
+package com.posadskiy.auth.core.service.impl;
 
-import com.posadskiy.auth.core.controller.RegistrationController;
-import com.posadskiy.auth.core.db.UserRepository;
-import com.posadskiy.auth.core.db.model.UserEntity;
+import com.posadskiy.auth.core.service.RegistrationService;
+import com.posadskiy.auth.core.repository.UserRepository;
+import com.posadskiy.auth.core.repository.entity.UserEntity;
 import com.posadskiy.auth.core.exception.UserWithProvidedEmailAlreadyExistException;
 import com.posadskiy.auth.core.mapper.entity.UserEntityMapper;
 import com.posadskiy.auth.core.model.User;
@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class RegistrationControllerImpl implements RegistrationController {
+public class RegistrationServiceImpl implements RegistrationService {
     final UserEntityMapper userEntityMapper;
     final UserRepository userRepository;
 

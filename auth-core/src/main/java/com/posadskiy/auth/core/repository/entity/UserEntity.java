@@ -1,4 +1,4 @@
-package com.posadskiy.auth.core.db.model;
+package com.posadskiy.auth.core.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

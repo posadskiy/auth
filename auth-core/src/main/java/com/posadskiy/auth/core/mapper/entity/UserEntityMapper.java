@@ -1,6 +1,6 @@
 package com.posadskiy.auth.core.mapper.entity;
 
-import com.posadskiy.auth.core.db.model.UserEntity;
+import com.posadskiy.auth.core.repository.entity.UserEntity;
 import com.posadskiy.auth.core.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
