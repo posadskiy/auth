@@ -5,14 +5,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.4</version>
+        <version>3.2.0</version>
         <relativePath/>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.posadskiy</groupId>
     <artifactId>auth-web</artifactId>
-    <version>0.0.1</version>
-    <packaging>war</packaging>
+    <version>0.0.1-SNAPSHOT</version>
     <name>auth-web</name>
 
     <description>Authentication module for com.posadskiy ecosystem</description>
@@ -40,13 +39,13 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <cost.accounting.users.api.version>0.0.1</cost.accounting.users.api.version>
         <cost.accounting.users.core.version>0.0.1</cost.accounting.users.core.version>
-        <com.posadskiy.auth.core.version>0.0.1</com.posadskiy.auth.core.version>
-        <com.posadskiy.auth.api.version>0.0.1</com.posadskiy.auth.api.version>
-        <lombok.version>1.18.26</lombok.version>
+        <com.posadskiy.auth.core.version>0.0.1-SNAPSHOT</com.posadskiy.auth.core.version>
+        <com.posadskiy.auth.api.version>0.0.1-SNAPSHOT</com.posadskiy.auth.api.version>
+        <lombok.version>1.18.30</lombok.version>
         <jasypt.version>3.0.5</jasypt.version>
         <jackson.annotation.version>2.14.2</jackson.annotation.version>
         <org.apache.commons.version>3.12.0</org.apache.commons.version>

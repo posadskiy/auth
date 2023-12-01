@@ -10,7 +10,7 @@
 
 	<groupId>com.posadskiy</groupId>
 	<artifactId>auth</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>auth</name>
     <description>Authentication module for com.posadskiy ecosystem</description>
@@ -38,19 +38,19 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <cost.accounting.users.api.version>0.0.1</cost.accounting.users.api.version>
         <cost.accounting.users.core.version>0.0.1</cost.accounting.users.core.version>
         <cost.accounting.users.web.version>0.0.1</cost.accounting.users.web.version>
         <com.posadskiy.auth.api.version>0.0.1</com.posadskiy.auth.api.version>
-        <lombok.version>1.18.26</lombok.version>
+        <lombok.version>1.18.30</lombok.version>
         <jasypt.version>3.0.5</jasypt.version>
         <jackson.annotation.version>2.14.2</jackson.annotation.version>
         <org.apache.commons.version>3.12.0</org.apache.commons.version>
         <tomcat.embedded.core.version>9.0.73</tomcat.embedded.core.version>
         <spring.session.jdbc.version>3.0.0</spring.session.jdbc.version>
-        <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
+        <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <org.jetbrains.annotation.version>16.0.3</org.jetbrains.annotation.version>
         <spring.context.version>6.0.6</spring.context.version>
         <spring.web.version>6.0.6</spring.web.version>
