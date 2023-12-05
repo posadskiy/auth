@@ -18,7 +18,7 @@ public class ExceptionsHandler {
     @ExceptionHandler(UserValidationException.class)
     public ResponseEntity<?> userValidationException(UserValidationException exception) {
         log.debug("UserValidationException", exception);
-        RestException restException = new RestException("Validation error", 1, String.join(", ", exception.getReason()));
+        RestException restException = new RestException("Validation error", 1, String.join(", ", exception.getReasons()));
         return new ResponseEntity<>(restException, HttpStatus.BAD_REQUEST);
     }
 

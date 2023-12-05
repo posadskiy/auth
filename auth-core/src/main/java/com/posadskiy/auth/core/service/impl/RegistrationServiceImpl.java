@@ -7,7 +7,7 @@ import com.posadskiy.auth.core.exception.UserWithProvidedEmailAlreadyExistExcept
 import com.posadskiy.auth.core.mapper.entity.UserEntityMapper;
 import com.posadskiy.auth.core.model.User;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -19,7 +19,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     final UserRepository userRepository;
 
     @Override
-    public User registration(@NotNull User user) {
+    public User registration(@NonNull User user) {
         final Optional<UserEntity> byEmail = userRepository.findByEmail(user.getEmail());
         if (byEmail.isPresent()) throw new UserWithProvidedEmailAlreadyExistException();
 

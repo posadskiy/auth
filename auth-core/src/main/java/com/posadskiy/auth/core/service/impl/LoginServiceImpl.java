@@ -6,8 +6,8 @@ import com.posadskiy.auth.core.service.UserService;
 import com.posadskiy.auth.core.exception.UserPasswordDoesNotMatchException;
 import com.posadskiy.auth.core.model.User;
 import com.posadskiy.auth.core.utils.PasswordMatcher;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,7 +17,7 @@ public class LoginServiceImpl implements LoginService {
     private final UserService userController;
 
     @Override
-    public User auth(@NotNull final UserDto userDto) {
+    public User auth(@NonNull final UserDto userDto) {
         User foundUser = userController.getByEmail(userDto.getEmail().toLowerCase());
 
         if (!PasswordMatcher.match(userDto.getPassword(), foundUser.getPassword())) {
