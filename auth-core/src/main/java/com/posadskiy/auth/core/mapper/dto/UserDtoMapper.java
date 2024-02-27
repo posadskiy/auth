@@ -27,7 +27,7 @@ public interface UserDtoMapper {
     default void setPassword(@MappingTarget User user, UserDto userDto) {
         user.setPassword(
             PasswordMatcher.encode(
-                userDto.getPassword()
+                userDto.password()
             )
         );
     }

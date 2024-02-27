@@ -43,7 +43,7 @@
         <cost.accounting.users.api.version>0.0.1</cost.accounting.users.api.version>
         <cost.accounting.users.core.version>0.0.1</cost.accounting.users.core.version>
         <cost.accounting.users.web.version>0.0.1</cost.accounting.users.web.version>
-        <com.posadskiy.auth.api.version>0.0.1</com.posadskiy.auth.api.version>
+        <com.posadskiy.auth.api.version>0.0.1-SNAPSHOT</com.posadskiy.auth.api.version>
         <lombok.version>1.18.30</lombok.version>
         <jasypt.version>3.0.5</jasypt.version>
         <jackson.annotation.version>2.14.2</jackson.annotation.version>
@@ -69,6 +69,7 @@
         <maven.gpg.plugin.version>3.0.1</maven.gpg.plugin.version>
         <maven.site.plugin.version>4.0.0-M5</maven.site.plugin.version>
         <maven.project.info.reports.plugin.version>3.4.2</maven.project.info.reports.plugin.version>
+        <jjwt.version>0.12.5</jjwt.version>
     </properties>
 
     <distributionManagement>
@@ -113,11 +114,6 @@
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-web</artifactId>
                 <version>${spring.web.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-security</artifactId>
-                <version>${spring.boot.starter.security.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.security</groupId>
@@ -184,6 +180,21 @@
                 <groupId>org.springframework.session</groupId>
                 <artifactId>spring-session-jdbc</artifactId>
                 <version>${spring.session.jdbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jjwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

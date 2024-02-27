@@ -10,7 +10,7 @@ public class UpdateValidation implements Validation<UserDto> {
     public void validate(UserDto user) {
         final Validator validator = new Validator();
 
-        validator.nameValidate(user.getName());
+        validator.nameValidate(user.name());
 
         validator.getResult();
     }

@@ -11,9 +11,9 @@ public class RegistrationValidation implements Validation<UserDto> {
     public void validate(UserDto user) {
         final Validator validator = new Validator();
 
-        validator.nameValidate(user.getName());
-        validator.passwordValidate(user.getPassword());
-        validator.emailValidate(user.getEmail());
+        validator.nameValidate(user.name());
+        validator.passwordValidate(user.password());
+        validator.emailValidate(user.email());
 
         validator.getResult();
     }
